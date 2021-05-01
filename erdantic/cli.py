@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from importlib import import_module
 from pathlib import Path
 from typing import List, Optional
@@ -6,6 +8,10 @@ import typer
 
 from erdantic.erd import create
 from erdantic.version import __version__
+
+# These are needed so the registry is initialized
+import erdantic.epydantic  # noqa: F401
+import erdantic.edataclasses  # noqa: F401
 
 
 app = typer.Typer()
