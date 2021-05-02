@@ -1,8 +1,17 @@
 #!/usr/bin/env python3
 
+import sys
+
 from importlib import import_module
 from pathlib import Path
 from typing import List, Optional
+
+try:
+    project_root = str(Path(__file__).parents[1])
+    sys.path.insert(0, project_root)
+except Exception:
+    project_root = None
+
 
 import typer
 
@@ -99,3 +108,7 @@ def main(
             raise typer.Exit(code=1)
         diagram.draw(out)
         typer.echo(f"Rendered diagram to {out}")
+
+
+if __name__ == "__main__":
+    app()
