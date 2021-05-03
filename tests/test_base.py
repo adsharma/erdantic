@@ -1,7 +1,7 @@
 import pytest
 
 import erdantic as erd
-from erdantic.examples.pydantic import Party
+from erdantic.examples.epydantic import Party
 from erdantic.base import Field, Model, register_model_adapter
 
 

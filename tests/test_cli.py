@@ -5,7 +5,7 @@ from typer.testing import CliRunner
 
 import erdantic as erd
 from erdantic.cli import app
-from erdantic.examples.pydantic import Party, Quest
+from erdantic.examples.epydantic import Party, Quest
 from erdantic.version import __version__
 
 
@@ -20,7 +20,7 @@ def test_draw(tmp_path):
 
     # With CLI
     path1 = tmp_path / "diagram1.png"
-    result = runner.invoke(app, ["erdantic.examples.pydantic.Party", "-o", str(path1)])
+    result = runner.invoke(app, ["erdantic.examples.epydantic.Party", "-o", str(path1)])
     assert result.exit_code == 0
     assert path1.exists()
     assert filecmp.cmp(path1, path_base)
@@ -28,7 +28,7 @@ def test_draw(tmp_path):
     # python -m erdantic
     path2 = tmp_path / "diagram2.png"
     result = subprocess.run(
-        ["python", "-m", "erdantic", "erdantic.examples.pydantic.Party", "-o", str(path2)],
+        ["python", "-m", "erdantic", "erdantic.examples.epydantic.Party", "-o", str(path2)],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         universal_newlines=True,
@@ -49,9 +49,9 @@ def test_with_terminus(tmp_path):
     result = runner.invoke(
         app,
         [
-            "erdantic.examples.pydantic.Party",
+            "erdantic.examples.epydantic.Party",
             "-t",
-            "erdantic.examples.pydantic.Quest",
+            "erdantic.examples.epydantic.Quest",
             "-o",
             str(path1),
         ],
@@ -62,7 +62,7 @@ def test_with_terminus(tmp_path):
 
 
 def test_missing_out(tmp_path):
-    result = runner.invoke(app, ["erdantic.examples.pydantic.Party"])
+    result = runner.invoke(app, ["erdantic.examples.epydantic.Party"])
     assert result.exit_code == 2
     assert "Error: Missing option '--out' / '-o'." in result.stdout
 
@@ -73,31 +73,31 @@ def test_no_overwrite(tmp_path):
 
     # With no-overwrite
     result = runner.invoke(
-        app, ["erdantic.examples.pydantic.Quest", "-o", str(path), "--no-overwrite"]
+        app, ["erdantic.examples.epydantic.Quest", "-o", str(path), "--no-overwrite"]
     )
     assert result.exit_code == 1
     assert path.stat().st_size == 0
 
     # Overwrite
-    result = runner.invoke(app, ["erdantic.examples.pydantic.Quest", "-o", str(path)])
+    result = runner.invoke(app, ["erdantic.examples.epydantic.Quest", "-o", str(path)])
     assert result.exit_code == 0
     assert path.stat().st_size > 0
 
 
 def test_dot(tmp_path):
-    result = runner.invoke(app, ["erdantic.examples.pydantic.Party", "-d"])
+    result = runner.invoke(app, ["erdantic.examples.epydantic.Party", "-d"])
     assert result.exit_code == 0
     assert erd.to_dot(Party).strip() == result.stdout.strip()
 
     path = tmp_path / "diagram.png"
-    result = runner.invoke(app, ["erdantic.examples.pydantic.Party", "-d", "-o", str(path)])
+    result = runner.invoke(app, ["erdantic.examples.epydantic.Party", "-d", "-o", str(path)])
     assert result.exit_code == 0
     assert not path.exists()  # -o is ignored and no file created
     assert erd.to_dot(Party).strip() == result.stdout.strip()
 
     # python -m erdantic
     result = subprocess.run(
-        ["python", "-m", "erdantic", "erdantic.examples.pydantic.Party", "-d"],
+        ["python", "-m", "erdantic", "erdantic.examples.epydantic.Party", "-d"],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         universal_newlines=True,

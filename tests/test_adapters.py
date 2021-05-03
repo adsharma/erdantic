@@ -7,9 +7,6 @@ import pytest
 from pytest_cases import param_fixtures
 
 import erdantic as erd
-import erdantic.erd
-import erdantic.examples.dataclasses
-import erdantic.examples.pydantic
 from erdantic.edataclasses import DataClassField, DataClassModel
 from erdantic.epydantic import PydanticField, PydanticModel
 
@@ -20,8 +17,8 @@ ASSETS_DIR = Path(__file__).parent / "assets"
 
 # key, model class, field class, examples module
 adapter_sets = [
-    ("dataclasses", DataClassModel, DataClassField, erdantic.examples.dataclasses),
-    ("pydantic", PydanticModel, PydanticField, erdantic.examples.pydantic),
+    ("dataclasses", DataClassModel, DataClassField, erd.examples.edataclasses),
+    ("pydantic", PydanticModel, PydanticField, erd.examples.epydantic),
 ]
 key, model_class, field_class, examples = param_fixtures(
     argnames="key, model_class, field_class, examples",
@@ -33,7 +30,7 @@ key, model_class, field_class, examples = param_fixtures(
 @pytest.fixture()
 def version_patch(monkeypatch):
     """Monkeypatch version to stable value to compare with static test assets."""
-    monkeypatch.setattr(erdantic.erd, "__version__", "TEST")
+    monkeypatch.setattr(erd, "__version__", "TEST")
 
 
 def test_is_model_type(model_class, examples):

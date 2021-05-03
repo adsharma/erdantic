@@ -3,15 +3,11 @@ from types import ModuleType
 
 
 import erdantic as erd
-import erdantic.erd
-import erdantic.examples.dataclasses
-import erdantic.examples.pydantic
-import erdantic.version
 
 ASSETS_DIR = Path(__file__).resolve().parents[1] / "assets"
 
 # monkeypatch __version__
-erd.__version__ = erdantic.erd.__version__ = erdantic.version.__version__ = "TEST"
+erd.__version__ = "TEST"
 
 
 def create_assets(examples: ModuleType):
@@ -26,5 +22,5 @@ def create_assets(examples: ModuleType):
 
 
 if __name__ == "__main__":
-    for module in [erdantic.examples.dataclasses, erdantic.examples.pydantic]:
+    for module in [erd.examples.edataclasses, erd.examples.epydantic]:
         create_assets(module)

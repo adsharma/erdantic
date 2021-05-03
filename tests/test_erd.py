@@ -1,12 +1,12 @@
+import erdantic as erd
 import filecmp
 import imghdr
-
 import pytest
 
-import erdantic as erd
-from erdantic.erd import Edge
-from erdantic.errors import UnknownModelTypeError
-from erdantic.examples.pydantic import Party, Quest
+Edge = erd.erd.Edge
+UnknownModelTypeError = erd.errors.UnknownModelTypeError
+Party = erd.examples.epydantic.Party
+Quest = erd.examples.epydantic.Quest
 
 
 def test_diagram_comparisons():

@@ -48,7 +48,7 @@ def main(
         ...,
         help=(
             "One or more full dotted paths for data model classes to include in diagram, "
-            "e.g., 'erdantic.examples.pydantic.Party'. Only the root models of composition trees "
+            "e.g., 'erdantic.examples.epydantic.Party'. Only the root models of composition trees "
             "are needed; erdantic will traverse the composition tree to find component classes."
         ),
     ),
