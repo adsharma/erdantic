@@ -1,7 +1,6 @@
 from pathlib import Path
 from types import ModuleType
 
-
 import erdantic as erd
 
 ASSETS_DIR = Path(__file__).resolve().parents[1] / "assets"

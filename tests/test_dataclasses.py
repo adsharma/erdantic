@@ -1,7 +1,7 @@
-import dataclasses
-from typing import Dict, Tuple
-
 import erdantic as erd
+import dataclasses
+
+from typing import Dict, Tuple
 
 
 def test_model_graph_search_nested_args():

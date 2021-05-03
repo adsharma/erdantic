@@ -1,8 +1,8 @@
+import erdantic as erd
 import pytest
 
-import erdantic as erd
-from erdantic.examples.epydantic import Party
 from erdantic.base import Field, Model, register_model_adapter
+from erdantic.examples.epydantic import Party
 
 
 def test_abstract_field_instatiation():

@@ -2,7 +2,4 @@
 
 from erdantic.examples import edataclasses, epydantic
 
-__all__ = [
-    "edataclasses",
-    "epydantic",
-]
+__all__ = ["edataclasses", "epydantic"]

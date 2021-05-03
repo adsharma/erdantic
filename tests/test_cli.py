@@ -1,14 +1,13 @@
+import erdantic as erd
+
 import filecmp
 import subprocess
 import sys
 
-from typer.testing import CliRunner
-
-import erdantic as erd
 from erdantic.cli import app
 from erdantic.examples.epydantic import Party, Quest
 from erdantic.version import __version__
-
+from typer.testing import CliRunner
 
 runner = CliRunner()
 

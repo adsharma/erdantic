@@ -1,9 +1,8 @@
-from enum import Enum, IntFlag
 import sys
 import typing
-
 import pytest
 
+from enum import Enum, IntFlag
 from erdantic.etyping import (
     _get_args,
     _get_origin,
@@ -92,10 +91,7 @@ repr_type_cases = [
 if sys.version_info[:2] >= (3, 9):
     # Python 3.9 adds [] support to builtin generics
     repr_type_cases.extend(
-        [
-            (list[int], "list[int]"),
-            (dict[str, list[int]], "dict[str, list[int]]"),
-        ]
+        [(list[int], "list[int]"), (dict[str, list[int]], "dict[str, list[int]]")]
     )
 
 

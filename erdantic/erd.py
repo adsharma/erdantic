@@ -2,7 +2,6 @@ import os
 from typing import Any, List, Sequence, Set, Union
 
 import pygraphviz as pgv
-
 from erdantic.base import Field, Model, model_adapter_registry
 from erdantic.errors import UnknownModelTypeError
 from erdantic.etyping import get_recursive_args
@@ -113,9 +112,7 @@ class EntityRelationshipDiagram:
         g.node_attr["shape"] = "plain"
         for model in self.models:
             g.add_node(
-                model.key,
-                label=model.dot_label(),
-                tooltip=model.docstring.replace("\n", "&#xA;"),
+                model.key, label=model.dot_label(), tooltip=model.docstring.replace("\n", "&#xA;")
             )
         for edge in self.edges:
             g.add_edge(
@@ -204,11 +201,7 @@ def adapt_model(obj: Any) -> Model:
     raise UnknownModelTypeError(model=obj)
 
 
-def search_composition_graph(
-    model: Model,
-    seen_models: Set[Model],
-    seen_edges: Set[Edge],
-):
+def search_composition_graph(model: Model, seen_models: Set[Model], seen_edges: Set[Edge]):
     """Recursively search composition graph for a model, where nodes are models and edges are
     composition relationships between models. Nodes and edges that are discovered will be added to
     the two respective provided set instances.

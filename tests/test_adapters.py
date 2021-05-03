@@ -1,18 +1,16 @@
-import filecmp
-from pathlib import Path
-import subprocess
-import textwrap
-import sys
-
-import pytest
-from pytest_cases import param_fixtures
-
 import erdantic as erd
+
+import filecmp
+import pytest
+import subprocess
+import sys
+import textwrap
+
 from erdantic.edataclasses import DataClassField, DataClassModel
 from erdantic.epydantic import PydanticField, PydanticModel
-
+from pathlib import Path
+from pytest_cases import param_fixtures
 from tests.utils import assert_dot_equals
-
 
 ASSETS_DIR = Path(__file__).parent / "assets"
 

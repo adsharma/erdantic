@@ -5,9 +5,4 @@ import erdantic.examples
 
 __version__
 
-__all__ = [
-    "create",
-    "draw",
-    "EntityRelationshipDiagram",
-    "to_dot",
-]
+__all__ = ["create", "draw", "EntityRelationshipDiagram", "to_dot"]

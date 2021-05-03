@@ -3,11 +3,9 @@ import dataclasses
 import inspect
 import typing_inspect
 
-from typing import Any, Callable, List, Union
-
-
 from erdantic.base import Field, Model, register_model_adapter
 from erdantic.etyping import GenericAlias, get_args, get_origin
+from typing import Any, Callable, List, Union
 
 
 class DataClassField(Field[dataclasses.Field]):

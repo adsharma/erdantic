@@ -1,9 +1,8 @@
-from typing import Dict, List, Optional, Tuple
-
-from pydantic import BaseModel
-
 import erdantic as erd
+
 from erdantic.epydantic import PydanticModel
+from pydantic import BaseModel
+from typing import Dict, List, Optional, Tuple
 
 
 def test_model_graph_search_nested_args():

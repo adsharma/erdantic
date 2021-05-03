@@ -1,10 +1,9 @@
-from typing import Any, List, Optional, Union, Type
-
 import pydantic
-from pydantic import fields as pydantic_fields
 
 from erdantic.base import Field, Model, register_model_adapter
 from erdantic.etyping import GenericAlias, repr_type_with_mro
+from pydantic import fields as pydantic_fields
+from typing import Any, List, Optional, Type, Union
 
 
 class PydanticField(Field[pydantic_fields.ModelField]):

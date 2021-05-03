@@ -1,26 +1,23 @@
 #!/usr/bin/env python3
 
 import sys
+import typer
 
+from erdantic.erd import create
+from erdantic.version import __version__
 from importlib import import_module
 from pathlib import Path
 from typing import List, Optional
+
+# These are needed so the registry is initialized
+import erdantic.edataclasses  # noqa: F401
+import erdantic.epydantic  # noqa: F401
 
 try:
     project_root = str(Path(__file__).parents[1])
     sys.path.insert(0, project_root)
 except Exception:
     project_root = None
-
-
-import typer
-
-from erdantic.erd import create
-from erdantic.version import __version__
-
-# These are needed so the registry is initialized
-import erdantic.epydantic  # noqa: F401
-import erdantic.edataclasses  # noqa: F401
 
 
 app = typer.Typer()
