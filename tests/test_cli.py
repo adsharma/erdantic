@@ -1,5 +1,6 @@
 import filecmp
 import subprocess
+import sys
 
 from typer.testing import CliRunner
 
@@ -28,7 +29,7 @@ def test_draw(tmp_path):
     # python -m erdantic
     path2 = tmp_path / "diagram2.png"
     result = subprocess.run(
-        ["python", "-m", "erdantic", "erdantic.examples.epydantic.Party", "-o", str(path2)],
+        [sys.executable, "-m", "erdantic", "erdantic.examples.epydantic.Party", "-o", str(path2)],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         universal_newlines=True,
@@ -64,7 +65,8 @@ def test_with_terminus(tmp_path):
 def test_missing_out(tmp_path):
     result = runner.invoke(app, ["erdantic.examples.epydantic.Party"])
     assert result.exit_code == 2
-    assert "Error: Missing option '--out' / '-o'." in result.stdout
+    assert "Error: Missing option" in result.stdout
+    assert "--out" in result.stdout
 
 
 def test_no_overwrite(tmp_path):
@@ -97,7 +99,7 @@ def test_dot(tmp_path):
 
     # python -m erdantic
     result = subprocess.run(
-        ["python", "-m", "erdantic", "erdantic.examples.epydantic.Party", "-d"],
+        [sys.executable, "-m", "erdantic", "erdantic.examples.epydantic.Party", "-d"],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         universal_newlines=True,
